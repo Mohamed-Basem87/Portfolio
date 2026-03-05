@@ -25,7 +25,7 @@ const greeting = {
   subTitle: emoji(
     "A passionate Machine Intelligence & Data Science student 🤖 who loves turning raw data into clear, actionable insights — using Python, Power BI, PyTorch, and more."
   ),
-  resumeLink: "",
+  resumeLink: "resume.pdf",
   displayGreeting: true
 };
 
