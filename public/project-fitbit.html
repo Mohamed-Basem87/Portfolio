@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitBit Activity Dashboard — Mohamed Basem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.4/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: "Agustina";
+      src: url("Agustina.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --darkBackground: #171c28;
+      --cardBG: #1e2336;
+      --textColorDark: #ffffff;
+      --subTitle: #868e96;
+      --buttonColor: #55198b;
+      --buttonHover: #8c43ce;
+      --githubBorder: #6c63ff;
+      --progressBar: #aaa5ff;
+      --lightBorder: rgba(211, 211, 211, 0.397);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: var(--darkBackground);
+      color: var(--textColorDark);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 70px;
+      background: var(--darkBackground);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      font-family: "Agustina", cursive;
+      font-size: 1.8rem; color: var(--textColorDark);
+      text-decoration: none; letter-spacing: 2px;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--subTitle); text-decoration: none;
+      padding: 8px 20px; border-radius: 6px;
+      border: 1.5px solid var(--lightBorder); transition: all 0.2s;
+    }
+    .nav-back:hover { color: var(--textColorDark); border-color: var(--progressBar); }
+
+    .page {
+      margin-top: 70px; width: 90%; max-width: 1100px;
+      margin-left: auto; margin-right: auto;
+      padding: 60px 0 100px;
+    }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; color: var(--subTitle);
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.5s 0.1s forwards;
+    }
+    .breadcrumb a { color: var(--subTitle); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--progressBar); }
+    .breadcrumb span { color: var(--textColorDark); }
+
+    .project-header { margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.5s 0.2s forwards; }
+    .project-category-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--progressBar); background: rgba(170,165,255,0.12);
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 1.2rem;
+    }
+    .project-category-badge::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--progressBar);
+    }
+    .project-title {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.2;
+      color: var(--textColorDark); margin-bottom: 1rem;
+    }
+    .project-subtitle {
+      font-size: 1rem; color: var(--subTitle);
+      font-weight: 400; line-height: 1.7; max-width: 700px;
+    }
+    .tools-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+    .tool-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--progressBar); background: rgba(170,165,255,0.1);
+      border: 1px solid rgba(170,165,255,0.25);
+      padding: 6px 14px; border-radius: 50px; transition: background 0.2s;
+    }
+    .tool-chip:hover { background: rgba(170,165,255,0.2); }
+
+    /* SLIDESHOW */
+    .slideshow-wrap {
+      margin: 3rem 0; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--lightBorder); background: var(--cardBG);
+      opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
+    }
+    .slideshow { position: relative; width: 100%; }
+    .slides { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .slide { min-width: 100%; position: relative; }
+    .slide img { width: 100%; height: 520px; object-fit: contain; display: block; background: #0d1117; cursor: zoom-in; }
+    .slide-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(transparent, rgba(23,28,40,0.95));
+      font-size: 0.82rem; color: rgba(255,255,255,0.7); font-weight: 500;
+    }
+    .slide-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(23,28,40,0.8); border: 1px solid var(--lightBorder);
+      color: var(--textColorDark);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .slide-arrow:hover { background: var(--buttonColor); border-color: var(--buttonColor); }
+    .slide-arrow.prev { left: 16px; }
+    .slide-arrow.next { right: 16px; }
+    .slide-dots {
+      display: flex; justify-content: center; gap: 8px;
+      padding: 1rem; background: var(--cardBG);
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--lightBorder); cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dot.active { background: var(--progressBar); transform: scale(1.3); }
+    .slide-counter {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(23,28,40,0.8); border: 1px solid var(--lightBorder);
+      color: var(--subTitle); font-size: 0.75rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 50px;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.95);
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img-wrap {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; flex: 1;
+    }
+    .lightbox img {
+      max-width: 88vw; max-height: 82vh;
+      object-fit: contain; border-radius: 8px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.8); display: block;
+    }
+    .lightbox-close {
+      position: fixed; top: 18px; right: 24px;
+      font-size: 2rem; color: #fff; cursor: pointer;
+      line-height: 1; opacity: 0.7; transition: opacity 0.2s; z-index: 10;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-arrow {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s; z-index: 10;
+    }
+    .lightbox-arrow:hover { background: var(--buttonColor); }
+    .lightbox-arrow.lb-prev { left: 16px; }
+    .lightbox-arrow.lb-next { right: 16px; }
+    .lightbox-caption {
+      color: rgba(255,255,255,0.6); font-size: 0.82rem;
+      padding: 12px 0 20px; text-align: center;
+    }
+    .lightbox-counter {
+      position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 600;
+      background: rgba(255,255,255,0.08); padding: 4px 14px; border-radius: 50px;
+    }
+
+    /* CONTENT */
+    .content-grid {
+      display: grid; grid-template-columns: 2fr 1fr;
+      gap: 2rem; margin-top: 3rem;
+    }
+    .content-card {
+      background: var(--cardBG); border: 1px solid var(--lightBorder);
+      border-radius: 14px; padding: 2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
+    }
+    .card-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--progressBar); margin-bottom: 0.75rem;
+    }
+    .card-title {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--textColorDark); margin-bottom: 1rem; line-height: 1.3;
+    }
+    .card-text { font-size: 0.88rem; color: var(--subTitle); line-height: 1.85; }
+    .card-text p { margin-bottom: 0.9rem; }
+    .card-text p:last-child { margin-bottom: 0; }
+
+    .results-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+    .result-item { display: flex; align-items: flex-start; gap: 12px; }
+    .result-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(170,165,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .result-text h4 { font-size: 0.88rem; font-weight: 700; color: var(--textColorDark); margin-bottom: 2px; }
+    .result-text p { font-size: 0.8rem; color: var(--subTitle); line-height: 1.5; }
+
+    .side-stats { display: flex; flex-direction: column; gap: 1rem; }
+    .stat-card {
+      background: var(--cardBG); border: 1px solid var(--lightBorder);
+      border-radius: 14px; padding: 1.5rem; text-align: center;
+      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .stat-card:hover { border-color: var(--githubBorder); transform: translateY(-3px); }
+    .stat-num { font-size: 1.9rem; font-weight: 800; color: var(--textColorDark); line-height: 1; margin-bottom: 4px; }
+    .stat-num span { color: var(--progressBar); }
+    .stat-label { font-size: 0.75rem; color: var(--subTitle); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .full-card { grid-column: 1 / -1; animation-delay: 0.55s; }
+
+    .page-footer {
+      margin-top: 4rem; padding-top: 2.5rem;
+      border-top: 1px solid var(--lightBorder);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      opacity: 0; animation: fadeUp 0.6s 0.6s forwards;
+    }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      padding: 12px 28px; border-radius: 8px;
+      background: var(--buttonColor); color: #fff;
+      text-decoration: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-back:hover { background: var(--buttonHover); transform: translateY(-2px); }
+    .page-footer-meta { font-size: 0.78rem; color: var(--subTitle); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .side-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 140px; }
+    }
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      .page { width: 95%; padding: 40px 0 60px; }
+      .slide img { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="nav-logo">Mohamed Basem</a>
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+  </header>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-counter" id="lb-counter"></div>
+    <button class="lightbox-arrow lb-prev" onclick="lbMove(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-arrow lb-next" onclick="lbMove(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-img-wrap" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()"/>
+    </div>
+    <div class="lightbox-caption" id="lb-caption"></div>
+  </div>
+
+  <div class="page">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <a href="index.html#projects">Projects</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span>FitBit Dashboard</span>
+    </div>
+
+    <div class="project-header">
+      <div class="project-category-badge">Power BI · Health Analytics</div>
+      <h1 class="project-title">FitBit Activity &<br>Health Analysis Dashboard</h1>
+      <p class="project-subtitle">
+        Transforming raw Fitbit fitness data into an interactive Power BI dashboard tracking calories, steps, distance, floors, and activity intensity — with dynamic slicers for year, month, and day-range exploration.
+      </p>
+      <div class="tools-row">
+        <span class="tool-chip"><i class="fas fa-chart-bar"></i> Power BI</span>
+        <span class="tool-chip"><i class="fas fa-filter"></i> Power Query</span>
+        <span class="tool-chip"><i class="fas fa-calculator"></i> DAX</span>
+        <span class="tool-chip"><i class="fas fa-heartbeat"></i> Health Analytics</span>
+        <span class="tool-chip"><i class="fas fa-bullseye"></i> KPI Targets</span>
+        <span class="tool-chip"><i class="fas fa-clock"></i> Time Intelligence</span>
+      </div>
+    </div>
+
+    <!-- SLIDESHOW -->
+    <div class="slideshow-wrap">
+      <div class="slideshow">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <img src="Screenshot 2026-03-21 235301.png" alt="FitBit Dashboard Overview"/>
+            <div class="slide-caption">FitBit Activity & Health Dashboard — Full Overview</div>
+          </div>
+          <div class="slide">
+            <img src="Screenshot 2026-03-21 235325.png" alt="Dashboard filtered by 2016 January"/>
+            <div class="slide-caption">Dashboard filtered by Year 2016 — January</div>
+          </div>
+          <div class="slide">
+            <img src="Screenshot 2026-03-21 235351.png" alt="DAX Measures & Data Model"/>
+            <div class="slide-caption">Data Model — Key Measures & FitBit Table</div>
+          </div>
+          <div class="slide">
+            <img src="Screenshot (124).png" alt="Power Query - FitBit table transformation"/>
+            <div class="slide-caption">Power Query — FitBit Table After Full Transformation</div>
+          </div>
+          <div class="slide">
+            <img src="Screenshot (125).png" alt="Power Query - Final cleaned dataset"/>
+            <div class="slide-caption">Power Query — Final Cleaned & Typed Dataset</div>
+          </div>
+        </div>
+
+        <button class="slide-arrow prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slide-arrow next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="slide-counter" id="counter">1 / 5</div>
+      </div>
+      <div class="slide-dots" id="dots"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content-grid">
+
+      <div class="content-card">
+        <div class="card-label">Overview</div>
+        <div class="card-title">Turning raw fitness tracking data into actionable health insights</div>
+        <div class="card-text">
+          <p>This project aimed to build an interactive Power BI dashboard to analyze Fitbit activity and health data, helping track key fitness indicators such as calories burned, steps taken, distance traveled, floors climbed, and activity intensity levels.</p>
+          <p>During the data preparation phase in Power Query, multiple files were combined, data types were corrected for date and numeric fields, duplicates were removed, and columns were renamed and standardized to create a clean, analysis-ready dataset.</p>
+          <p>The data model was built around a central daily activity table containing Date, Calories, Steps, Distance, Floors, Sitting Minutes, and activity intensity minutes. A supporting Key Measures table stores target benchmark values for Calories, Steps, and Floors — enabling direct comparisons between actual performance and predefined goals using Gauge Charts.</p>
+          <p>DAX measures were created for Average Calories, Steps, Distance, Floors, and all three activity intensity levels (Slow, Moderate, Intense). The dashboard includes dynamic slicers for year, month (button-style), and a day-range slider for flexible day-level exploration.</p>
+        </div>
+      </div>
+
+      <div class="side-stats">
+        <div class="stat-card">
+          <div class="stat-num">11.31<span>K</span></div>
+          <div class="stat-label">Avg Daily Steps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3.03<span>K</span></div>
+          <div class="stat-label">Avg Calories</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">8.48<span></span></div>
+          <div class="stat-label">Avg Distance (km)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2<span>yr</span></div>
+          <div class="stat-label">2015 — 2016</div>
+        </div>
+      </div>
+
+      <div class="content-card full-card">
+        <div class="card-label">Key Results & Findings</div>
+        <div class="card-title">What the dashboard revealed</div>
+        <div class="results-list">
+          <div class="result-item">
+            <div class="result-icon">🏃</div>
+            <div class="result-text">
+              <h4>Average daily steps reached 11.31K — close to the 12K target</h4>
+              <p>Gauge chart comparison showed consistent near-target performance, with peak activity days exceeding 20K steps.</p>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon">🔥</div>
+            <div class="result-text">
+              <h4>Slow activity dominated at 79.24% of total activity minutes</h4>
+              <p>The donut chart revealed that only 11% of monthly activity was intense, highlighting an opportunity to increase high-intensity exercise.</p>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon">📅</div>
+            <div class="result-text">
+              <h4>Day 16 consistently showed the highest step and floor averages</h4>
+              <p>Bar charts by day exposed mid-month activity spikes, suggesting a recurring behavioral pattern in the tracking period.</p>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon">📊</div>
+            <div class="result-text">
+              <h4>2016 showed higher average steps and distance than 2015</h4>
+              <p>Year-over-year comparison via the year slicer revealed improved fitness performance across key metrics in 2016.</p>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon">🎯</div>
+            <div class="result-text">
+              <h4>Calories and floors consistently fell short of target benchmarks</h4>
+              <p>Gauge charts for calories (target 2989) and floors (target 10) showed the user was tracking below goals on most days, enabling targeted improvement focus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <span class="page-footer-meta">Mohamed Basem · Power BI · 2026</span>
+    </div>
+
+  </div>
+
+  <script>
+    const totalSlides = 5;
+    let current = 0;
+    let autoTimer;
+
+    const dotsContainer = document.getElementById('dots');
+    for (let i = 0; i < totalSlides; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goTo(i);
+      dotsContainer.appendChild(d);
+    }
+
+    function goTo(n) {
+      current = (n + totalSlides) % totalSlides;
+      document.getElementById('slides').style.transform = `translateX(-${current * 100}%)`;
+      document.getElementById('counter').textContent = `${current + 1} / ${totalSlides}`;
+      document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      resetAuto();
+    }
+
+    function moveSlide(dir) { goTo(current + dir); }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') { if (document.getElementById('lightbox').classList.contains('active')) lbMove(-1); else moveSlide(-1); }
+      if (e.key === 'ArrowRight') { if (document.getElementById('lightbox').classList.contains('active')) lbMove(1); else moveSlide(1); }
+    });
+
+    let touchStartX = 0;
+    const slideshow = document.querySelector('.slideshow');
+    slideshow.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    slideshow.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) moveSlide(diff > 0 ? 1 : -1);
+    });
+
+    // Lightbox
+    let lbIndex = 0;
+    const allSlides = document.querySelectorAll('.slide');
+    function openLightbox(idx) {
+      lbIndex = idx;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function updateLightbox() {
+      const img = allSlides[lbIndex].querySelector('img');
+      const cap = allSlides[lbIndex].querySelector('.slide-caption');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lb-caption').textContent = cap ? cap.textContent : '';
+      document.getElementById('lb-counter').textContent = `${lbIndex + 1} / ${totalSlides}`;
+    }
+    function lbMove(dir) {
+      lbIndex = (lbIndex + dir + totalSlides) % totalSlides;
+      updateLightbox();
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    allSlides.forEach((slide, idx) => {
+      slide.querySelector('img').addEventListener('click', () => openLightbox(idx));
+    });
+
+    resetAuto();
+  </script>
+
+</body>
+</html>

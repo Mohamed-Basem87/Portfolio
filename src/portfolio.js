@@ -57,42 +57,15 @@ const skillsSection = {
   ],
 
   softwareSkills: [
-    {
-      skillName: "Python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "PyTorch",
-      fontAwesomeClassname: "fas fa-fire"
-    },
-    {
-      skillName: "Pandas",
-      fontAwesomeClassname: "fas fa-table"
-    },
-    {
-      skillName: "NumPy",
-      fontAwesomeClassname: "fas fa-calculator"
-    },
-    {
-      skillName: "Power BI",
-      fontAwesomeClassname: "fas fa-chart-bar"
-    },
-    {
-      skillName: "Excel",
-      fontAwesomeClassname: "fas fa-file-excel"
-    },
-    {
-      skillName: "C++",
-      fontAwesomeClassname: "fas fa-code"
-    },
-    {
-      skillName: "GitHub",
-      fontAwesomeClassname: "fab fa-github"
-    },
-    {
-      skillName: "SQL",
-      fontAwesomeClassname: "fas fa-database"
-    }
+    { skillName: "Python", fontAwesomeClassname: "fab fa-python" },
+    { skillName: "PyTorch", fontAwesomeClassname: "fas fa-fire" },
+    { skillName: "Pandas", fontAwesomeClassname: "fas fa-table" },
+    { skillName: "NumPy", fontAwesomeClassname: "fas fa-calculator" },
+    { skillName: "Power BI", fontAwesomeClassname: "fas fa-chart-bar" },
+    { skillName: "Excel", fontAwesomeClassname: "fas fa-file-excel" },
+    { skillName: "C++", fontAwesomeClassname: "fas fa-code" },
+    { skillName: "GitHub", fontAwesomeClassname: "fab fa-github" },
+    { skillName: "SQL", fontAwesomeClassname: "fas fa-database" }
   ],
   display: true
 };
@@ -102,26 +75,11 @@ const skillsSection = {
 const techStack = {
   viewSkillBars: true,
   experience: [
-    {
-      Stack: "Data Analysis",
-      progressPercentage: "85%"
-    },
-    {
-      Stack: "Python / Pandas / NumPy",
-      progressPercentage: "80%"
-    },
-    {
-      Stack: "Machine Learning / PyTorch",
-      progressPercentage: "70%"
-    },
-    {
-      Stack: "Power BI / Excel",
-      progressPercentage: "80%"
-    },
-    {
-      Stack: "C++",
-      progressPercentage: "65%"
-    }
+    { Stack: "Data Analysis", progressPercentage: "85%" },
+    { Stack: "Python / Pandas / NumPy", progressPercentage: "80%" },
+    { Stack: "Machine Learning / PyTorch", progressPercentage: "70%" },
+    { Stack: "Power BI / Excel", progressPercentage: "80%" },
+    { Stack: "C++", progressPercentage: "65%" }
   ],
   displayCodersrank: false
 };
@@ -159,7 +117,7 @@ const workExperiences = {
 
 const openSource = {
   showGithubProfile: "true",
-  display: true
+  display: false
 };
 
 // Big Projects Section
@@ -175,10 +133,7 @@ const bigProjects = {
       projectDesc:
         "Full Power BI analytics project — raw data to star schema model to interactive dashboard tracking $17.9M in revenue, 52K orders, and salesperson performance against targets.",
       footerLink: [
-        {
-          name: "More Info",
-          url: "/project-sales-dashboard.html"
-        }
+        { name: "More Info", url: "/project-sales-dashboard.html" }
       ]
     },
     {
@@ -187,10 +142,16 @@ const bigProjects = {
       projectDesc:
         "Power BI project analyzing $9.68M in operational revenue and $4.02M gross margin across 5 suppliers — with DAX measures for cost, margin %, and monthly trend analysis.",
       footerLink: [
-        {
-          name: "More Info",
-          url: "/project-revenue-margin.html"
-        }
+        { name: "More Info", url: "/project-revenue-margin.html" }
+      ]
+    },
+    {
+      image: require("./assets/images/fitbitDashboard.png"),
+      projectName: "FitBit Activity & Health Analysis Dashboard",
+      projectDesc:
+        "Power BI health analytics dashboard tracking daily calories, steps, distance, floors, and activity intensity across 2015–2016 — with KPI targets, gauge charts, and dynamic day-range slicers.",
+      footerLink: [
+        { name: "More Info", url: "/project-fitbit.html" }
       ]
     }
   ],
@@ -201,8 +162,7 @@ const bigProjects = {
 
 const achievementSection = {
   title: emoji("Achievements & Certifications 🏆"),
-  subtitle:
-    "Courses and certifications I'm currently working on.",
+  subtitle: "Courses and certifications I'm currently working on.",
   achievementsCards: [
     {
       title: "NVIDIA Deep Learning Course",
@@ -210,10 +170,7 @@ const achievementSection = {
       image: require("./assets/images/nvidiaLogo.png"),
       imageAlt: "NVIDIA",
       footerLink: [
-        {
-          name: "Course Info",
-          url: "https://www.nvidia.com/en-us/training/"
-        }
+        { name: "Course Info", url: "https://www.nvidia.com/en-us/training/" }
       ]
     },
     {
@@ -222,10 +179,7 @@ const achievementSection = {
       image: require("./assets/images/depiLogo.png"),
       imageAlt: "DEPI",
       footerLink: [
-        {
-          name: "Program Info",
-          url: "https://depi.gov.eg/"
-        }
+        { name: "Program Info", url: "https://depi.gov.eg/" }
       ]
     }
   ],
@@ -233,28 +187,16 @@ const achievementSection = {
 };
 
 // Blog Section
-
-const blogSection = {
-  display: false
-};
+const blogSection = { display: false };
 
 // Talks Section
-
-const talkSection = {
-  display: false
-};
+const talkSection = { display: false };
 
 // Podcast Section
-
-const podcastSection = {
-  display: false
-};
+const podcastSection = { display: false };
 
 // Resume Section
-
-const resumeSection = {
-  display: false
-};
+const resumeSection = { display: false };
 
 // Contact Section
 
