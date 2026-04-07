@@ -5,19 +5,13 @@
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation";
 
-// Splash Screen
-
 const splashScreen = {
   enabled: true,
   animation: splashAnimation,
   duration: 2000
 };
 
-// Summary And Greeting Section
-
-const illustration = {
-  animated: true
-};
+const illustration = { animated: true };
 
 const greeting = {
   username: "Mohamed-Basem87",
@@ -28,8 +22,6 @@ const greeting = {
   resumeLink: "resume.pdf",
   displayGreeting: true
 };
-
-// Social Media Links
 
 const socialMediaLinks = {
   github: "https://github.com/Mohamed-Basem87",
@@ -42,8 +34,6 @@ const socialMediaLinks = {
   display: true
 };
 
-// Skills Section
-
 const skillsSection = {
   title: "What I Do",
   subTitle:
@@ -55,7 +45,6 @@ const skillsSection = {
     emoji("⚙️ Solve algorithmic problems and build efficient solutions in C++"),
     emoji("🔍 Transform and model data using Power Query")
   ],
-
   softwareSkills: [
     { skillName: "Python", fontAwesomeClassname: "fab fa-python" },
     { skillName: "PyTorch", fontAwesomeClassname: "fas fa-fire" },
@@ -70,8 +59,6 @@ const skillsSection = {
   display: true
 };
 
-// Tech Stack / Skill Bars
-
 const techStack = {
   viewSkillBars: true,
   experience: [
@@ -83,8 +70,6 @@ const techStack = {
   ],
   displayCodersrank: false
 };
-
-// Education Section
 
 const educationInfo = {
   display: true,
@@ -106,21 +91,15 @@ const educationInfo = {
   ]
 };
 
-// Work Experience Section
-
 const workExperiences = {
   display: false,
   experience: []
 };
 
-// Open Source Section
-
 const openSource = {
   showGithubProfile: "true",
   display: false
 };
-
-// Big Projects Section
 
 const bigProjects = {
   title: "Projects",
@@ -153,12 +132,19 @@ const bigProjects = {
       footerLink: [
         { name: "More Info", url: "/project-fitbit.html" }
       ]
+    },
+    {
+      image: require("./assets/images/volunteerDashboard.png"),
+      projectName: "Volunteer Management & Performance Analysis Dashboard",
+      projectDesc:
+        "Power BI nonprofit dashboard analyzing 140 volunteer records — tracking 112 accepted applications, 8.2K hours logged, geographic distribution, educational profiles, and monthly engagement trends.",
+      footerLink: [
+        { name: "More Info", url: "/project-volunteer.html" }
+      ]
     }
   ],
   display: true
 };
-
-// Achievement Section
 
 const achievementSection = {
   title: emoji("Achievements & Certifications 🏆"),
@@ -186,19 +172,10 @@ const achievementSection = {
   display: true
 };
 
-// Blog Section
 const blogSection = { display: false };
-
-// Talks Section
 const talkSection = { display: false };
-
-// Podcast Section
 const podcastSection = { display: false };
-
-// Resume Section
 const resumeSection = { display: false };
-
-// Contact Section
 
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
@@ -207,8 +184,6 @@ const contactInfo = {
   number: "",
   email_address: "mohamedbasem518@gmail.com"
 };
-
-// Twitter Section
 
 const twitterDetails = {
   userName: "",
