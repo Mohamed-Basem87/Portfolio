@@ -89,33 +89,6 @@ const educationInfo = {
   ]
 };
 
-const workExperiences = {
-  display: false,
-  experience: [
-    {
-      company: "Paid Data Analysis Projects",
-      role: "Data Analyst",
-      date: "2025 — Present",
-      companylogo: require("./assets/images/developerActivity.svg"),
-      desc: "Delivered paid data analysis solutions using Power BI, Excel, and Python.",
-      descBullets: [
-        "Built interactive business dashboards for sales and performance analysis using Power BI, Power Query, and DAX.",
-        "Developed Python automation for Excel cross-matching, reconciliation, OCR-assisted extraction, anomaly detection, and semi-automated review workflows.",
-        "Transformed raw, inconsistent data into validated, decision-ready outputs through dashboard reporting, data cleaning, business-rule validation, and automated processing pipelines."
-      ]
-    },
-    {
-      company: "Local Brands & Restaurants",
-      role: "Graphic Designer | Commercial Projects",
-      date: "2020 — 2024",
-      companylogo: require("./assets/images/skill.svg"),
-      desc: "Delivered visual design work for local brands and restaurants.",
-      descBullets: [
-        "Worked directly with business owners to translate business needs into visual materials."
-      ]
-    }
-  ]
-};
 const openSource = {showGithubProfile: "true", display: false};
 
 const bigProjects = {
@@ -211,7 +184,6 @@ export {
   skillsSection,
   techStack,
   educationInfo,
-  workExperiences,
   openSource,
   bigProjects,
   achievementSection,
