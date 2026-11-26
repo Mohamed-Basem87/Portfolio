@@ -137,11 +137,11 @@ const bigProjects = {
 
 const achievementSection = {
   title: emoji("Achievements & Certifications 🏆"),
-  subtitle: "Courses and certifications I'm currently working on.",
+  subtitle: "Courses and certifications.",
   achievementsCards: [
     {
       title: "NVIDIA Deep Learning Course",
-      subtitle: "NVIDIA Deep Learning Institute — In Progress",
+      subtitle: "NVIDIA Deep Learning Institute",
       image: require("./assets/images/nvidiaLogo.png"),
       imageAlt: "NVIDIA",
       footerLink: [
@@ -150,7 +150,7 @@ const achievementSection = {
     },
     {
       title: "DEPI Microsoft Power BI Specialist",
-      subtitle: "Digital Egypt Pioneers Initiative — In Progress",
+      subtitle: "Digital Egypt Pioneers Initiative",
       image: require("./assets/images/depiLogo.png"),
       imageAlt: "DEPI",
       footerLink: [{name: "Program Info", url: "https://depi.gov.eg/"}]
