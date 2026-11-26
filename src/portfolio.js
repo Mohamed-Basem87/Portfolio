@@ -90,7 +90,7 @@ const educationInfo = {
 };
 
 const workExperiences = {
-  display: true,
+  display: false,
   experience: [
     {
       company: "Paid Data Analysis Projects",
