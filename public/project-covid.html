@@ -372,9 +372,8 @@
         <div class="card-title">Measuring pandemic impact across 20 companies, 9 sectors, and 5 years</div>
         <div class="card-text">
           <p>This project analyzes how COVID-19 disrupted U.S. financial markets using daily stock prices, company financial statements, market returns, and sector classifications for 20 leading companies across nine sectors, including technology, healthcare, retail, finance, energy, transportation, consumer goods, motor vehicles and hospitality.</p>
-          <p>A star-schema data model was built with daily stock performance as the primary fact table, supported by company dimension, sector classification, market benchmark data (BetaReturns), and a calendar table for time intelligence. DAX measures cover total return, intraday daily return, sample volatility, beta, Sharpe ratio, maximum/COVID drawdown, COVID recovery %, ROA, profit margin, business strength, and revenue efficiency.</p>
-          <p>The dashboard is structured across 6 analytical views: Overview, Ranking, COVID Deep Dive, Tech vs Non-Tech, Company Drill-Down, and a Recommendations Center — guiding users from macro-level insights to individual company and investor-specific analysis.</p>
-          <p>The PBIX and source CSVs are not published in the repository, but the figures below were verified against an author-supplied local copy of the model.</p>
+          <p>A star-schema model holds daily stock prices, annual financials, market benchmark data and a calendar table. Returns and risk measures use split/dividend-adjusted close-to-close prices; beta pairs stock and benchmark returns on common dates.</p>
+          <p>The dashboard is structured across 6 analytical views: Overview, Ranking, COVID Deep Dive, Tech vs Non-Tech, Company Drill-Down, and a Recommendations Center.</p>
         </div>
       </div>
 
@@ -411,29 +410,29 @@
           <div class="result-item">
             <div class="result-icon">⚖️</div>
             <div class="result-text">
-              <h4>Apple led the Highest Sharpe Ratio card (0.0562)</h4>
-              <p>The verified formula is average intraday daily return divided by sample volatility, with no risk-free-rate subtraction. A separate Return/Volatility chart (Tesla 147, Apple 128, Microsoft 119) is a different measure and is not a Sharpe score.</p>
+              <h4>Costco led the Highest Sharpe Ratio card (0.0573)</h4>
+              <p>Sharpe is average adjusted daily return divided by sample volatility, with no risk-free-rate subtraction. The separate Return/Volatility chart uses total return (Tesla 115, Costco 104, Apple 103).</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">📉</div>
             <div class="result-text">
-              <h4>American Airlines had the deepest 2020 COVID drawdown at -84.5% (15 May 2020)</h4>
-              <p>Travel restrictions created severe financial pressure on airlines. Zoom had the largest full-period drawdown at -88.5%; the two measures should not be mixed.</p>
+              <h4>American Airlines had the deepest 2020 COVID drawdown at -84.1% (15 May 2020)</h4>
+              <p>Zoom had the largest full-period drawdown at -88.5%; the two windows measure different things.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">💻</div>
             <div class="result-text">
-              <h4>Tech sector outperformed Non-Tech by +67 percentage points in average return</h4>
-              <p>Tech averaged 105% vs Non-Tech at 38%. In the 2020 COVID recovery window, Tech averaged +244.5% vs Non-Tech +80.1%, a +164.4-point gap; no recovery-speed multiple was calculated.</p>
+              <h4>Tech sector outperformed Non-Tech by +54.5 percentage points in average return</h4>
+              <p>Tech averaged 108.6% vs Non-Tech 54.1%. In the 2020 COVID recovery window, Tech averaged +244.5% vs Non-Tech +80.1%, a +164.4-point gap.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">🎯</div>
             <div class="result-text">
-              <h4>Investor recommendation framework mapped 3 strategies to optimal stocks</h4>
-              <p>Growth investors: Tesla ($57,645 final value from a hypothetical $10,000 investment). Balanced investors: Apple ($30,171; Microsoft $27,902), supported by the highest Sharpe Ratio score. Conservative investors: Johnson & Johnson (lowest volatility at σ = 1.08% daily).</p>
+              <h4>Investor recommendation framework mapped 3 strategies to stocks</h4>
+              <p>Growth: Tesla ($57,645 from a hypothetical $10,000 investment). Balanced: Costco ($25,967; highest Sharpe Ratio). Conservative: Johnson & Johnson (lowest volatility at σ = 1.31% daily).</p>
             </div>
           </div>
           <div class="result-item">

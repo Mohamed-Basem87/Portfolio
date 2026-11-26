@@ -408,7 +408,7 @@
         <div class="card-text">
           <p>This project focused on transforming raw operational sales data into a fully structured analytical model and building a dynamic Power BI dashboard to analyze revenue performance, salesperson productivity, and product demand.</p>
           <p>The data model uses a star schema with two fact tables (Sales and Target) and three dimension tables (Products, Salesperson and Calendar). All preparation was handled inside Power Query before loading into the model.</p>
-          <p>Several DAX measures were built to calculate key business metrics including total revenue, total orders, average transaction price (ATP), and salesperson achievement against targets — all dynamically responsive to filters and slicers.</p>
+          <p>DAX measures calculate total revenue, total orders, average transaction price (ATP), and salesperson achievement against targets.</p>
         </div>
       </div>
 
@@ -466,8 +466,8 @@
           <div class="result-item">
             <div class="result-icon">⚙️</div>
             <div class="result-text">
-              <h4>A star schema keeps the report responsive to slicers</h4>
-              <p>Two fact tables (Sales and Target) and three dimension tables support cross-filtering; no query-speed benchmark was run.</p>
+              <h4>Star-schema model connects sales and targets</h4>
+              <p>Two fact tables (Sales and Target) and three dimension tables feed the report visuals.</p>
             </div>
           </div>
         </div>
