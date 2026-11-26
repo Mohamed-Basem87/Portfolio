@@ -310,7 +310,7 @@
       <div class="project-category-badge">Power BI · Financial Analysis · Stock Market</div>
       <h1 class="project-title">COVID Market Impact<br>Dashboard</h1>
       <p class="project-subtitle">
-        An advanced Power BI project analyzing how the COVID-19 pandemic affected 20 major U.S. companies across 7 sectors between 2018 and 2022 — combining stock market data, financial fundamentals, risk metrics, and an investor recommendation framework.
+        A Power BI project analyzing how the COVID-19 pandemic affected 20 major U.S. companies across 9 sectors between 2018 and 2022 - combining stock market data, financial fundamentals, risk metrics, and an investor recommendation framework.
       </p>
       <div class="tools-row">
         <span class="tool-chip"><i class="fas fa-chart-bar"></i> Power BI</span>
@@ -369,11 +369,12 @@
 
       <div class="content-card">
         <div class="card-label">Overview</div>
-        <div class="card-title">Measuring pandemic impact across 20 companies, 7 sectors, and 5 years</div>
+        <div class="card-title">Measuring pandemic impact across 20 companies, 9 sectors, and 5 years</div>
         <div class="card-text">
-          <p>This project analyzes how COVID-19 disrupted U.S. financial markets using daily stock prices, company financial statements, market returns, and sector classifications for 20 leading companies across technology, healthcare, retail, finance, energy, transportation, and consumer sectors.</p>
-          <p>A star-schema data model was built with daily stock performance as the primary fact table, supported by company dimension, sector classification, market benchmark data (BetaReturns), and a calendar table for time intelligence. DAX measures cover total return, daily return, volatility, beta, Sharpe ratio, maximum drawdown, COVID recovery %, risk-adjusted return, ROA, profit margin, and revenue efficiency.</p>
+          <p>This project analyzes how COVID-19 disrupted U.S. financial markets using daily stock prices, company financial statements, market returns, and sector classifications for 20 leading companies across nine sectors, including technology, healthcare, retail, finance, energy, transportation, consumer goods, motor vehicles and hospitality.</p>
+          <p>A star-schema data model was built with daily stock performance as the primary fact table, supported by company dimension, sector classification, market benchmark data (BetaReturns), and a calendar table for time intelligence. DAX measures cover total return, intraday daily return, sample volatility, beta, Sharpe ratio, maximum/COVID drawdown, COVID recovery %, ROA, profit margin, business strength, and revenue efficiency.</p>
           <p>The dashboard is structured across 6 analytical views: Overview, Ranking, COVID Deep Dive, Tech vs Non-Tech, Company Drill-Down, and a Recommendations Center — guiding users from macro-level insights to individual company and investor-specific analysis.</p>
+          <p>The PBIX and source CSVs are not published in the repository, but the figures below were verified against an author-supplied local copy of the model.</p>
         </div>
       </div>
 
@@ -410,36 +411,36 @@
           <div class="result-item">
             <div class="result-icon">⚖️</div>
             <div class="result-text">
-              <h4>Apple offered the best risk-adjusted return with a Sharpe score of 128</h4>
-              <p>With 201.7% total return and moderate volatility, Apple ranked as the strongest risk-reward investment across the analysis period.</p>
+              <h4>Apple led the Highest Sharpe Ratio card (0.0562)</h4>
+              <p>The verified formula is average intraday daily return divided by sample volatility, with no risk-free-rate subtraction. A separate Return/Volatility chart (Tesla 147, Apple 128, Microsoft 119) is a different measure and is not a Sharpe score.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">📉</div>
             <div class="result-text">
-              <h4>American Airlines suffered the worst drawdown at -84.5% (May 2020)</h4>
-              <p>Travel restrictions created severe financial pressure on the airline industry, with Delta Air Lines also falling -70% during the pandemic trough.</p>
+              <h4>American Airlines had the deepest 2020 COVID drawdown at -84.5% (15 May 2020)</h4>
+              <p>Travel restrictions created severe financial pressure on airlines. Zoom had the largest full-period drawdown at -88.5%; the two measures should not be mixed.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">💻</div>
             <div class="result-text">
-              <h4>Tech sector outperformed Non-Tech by +67% in average return</h4>
-              <p>Tech averaged 105% vs Non-Tech at 38% — with +164.4% COVID outperformance and a faster recovery timeline driven by digital-first business models.</p>
+              <h4>Tech sector outperformed Non-Tech by +67 percentage points in average return</h4>
+              <p>Tech averaged 105% vs Non-Tech at 38%. In the 2020 COVID recovery window, Tech averaged +244.5% vs Non-Tech +80.1%, a +164.4-point gap; no recovery-speed multiple was calculated.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">🎯</div>
             <div class="result-text">
               <h4>Investor recommendation framework mapped 3 strategies to optimal stocks</h4>
-              <p>Growth investors: Tesla ($57,645 final value). Balanced investors: Apple ($30,171). Conservative investors: Johnson & Johnson (lowest volatility at σ = 1.08% daily).</p>
+              <p>Growth investors: Tesla ($57,645 final value from a hypothetical $10,000 investment). Balanced investors: Apple ($30,171; Microsoft $27,902), supported by the highest Sharpe Ratio score. Conservative investors: Johnson & Johnson (lowest volatility at σ = 1.08% daily).</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">🏦</div>
             <div class="result-text">
-              <h4>Facebook had the strongest business fundamentals with 21.12% profit margin</h4>
-              <p>Among all 20 companies, Facebook topped the profitability efficiency ranking — ahead of Google (18.22%), Apple (15.22%), and Microsoft (14.62%).</p>
+              <h4>Facebook ranked first on the Strongest Business score</h4>
+              <p>Business Strength Score is 0.5 × ROA + 0.5 × Profit Margin. Apple led the ROA chart at 21.12% (ahead of Facebook at 18.22%, Google at 15.22% and Microsoft at 14.62%), while the separate average profit margin card shows JPMorgan Chase at 31.0%.</p>
             </div>
           </div>
         </div>

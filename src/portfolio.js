@@ -15,7 +15,7 @@ const greeting = {
   username: "Mohamed-Basem87",
   title: "Hi, I'm Mohamed Basem",
   subTitle: emoji(
-    "A passionate Machine Intelligence & Data Science student 🤖 who loves turning raw data into clear, actionable insights — using Python, Power BI, PyTorch, and more."
+    "Data Analyst | AI Student 🤖 who loves turning raw data into clear, actionable insights — using Python, Power BI, PyTorch, and more."
   ),
   resumeLink: "resume.pdf",
   displayGreeting: true
@@ -35,7 +35,7 @@ const socialMediaLinks = {
 const skillsSection = {
   title: "What I Do",
   subTitle:
-    "Machine Intelligence & Data Science student who explores AI, data analysis, and everything in between.",
+    "Data Analyst | AI Student who explores AI, data analysis, and everything in between.",
   skills: [
     emoji("📊 Build interactive dashboards and reports using Power BI & Excel"),
     emoji("🐍 Analyze and clean datasets using Python, Pandas & NumPy"),
@@ -73,11 +73,11 @@ const educationInfo = {
   display: true,
   schools: [
     {
-      schoolName: "Menoufia University",
+      schoolName: "Menofia University",
       logo: require("./assets/images/facultyAILogo.jpg"),
       subHeader:
         "Bachelor of Science in Artificial Intelligence — Machine Intelligence Department",
-      duration: "2025 — Present",
+      duration: "2025 — 2029 (Expected)",
       desc: "Faculty of Artificial Intelligence. Studying machine intelligence, data science, neural networks, and algorithms.",
       descBullets: [
         "Machine Intelligence & Deep Learning",
@@ -89,7 +89,33 @@ const educationInfo = {
   ]
 };
 
-const workExperiences = {display: false, experience: []};
+const workExperiences = {
+  display: true,
+  experience: [
+    {
+      company: "Paid Data Analysis Projects",
+      role: "Data Analyst",
+      date: "2025 — Present",
+      companylogo: require("./assets/images/developerActivity.svg"),
+      desc: "Delivered paid data analysis solutions using Power BI, Excel, and Python.",
+      descBullets: [
+        "Built interactive business dashboards for sales and performance analysis using Power BI, Power Query, and DAX.",
+        "Developed Python automation for Excel cross-matching, reconciliation, OCR-assisted extraction, anomaly detection, and semi-automated review workflows.",
+        "Transformed raw, inconsistent data into validated, decision-ready outputs through dashboard reporting, data cleaning, business-rule validation, and automated processing pipelines."
+      ]
+    },
+    {
+      company: "Local Brands & Restaurants",
+      role: "Graphic Designer | Commercial Projects",
+      date: "2020 — 2024",
+      companylogo: require("./assets/images/skill.svg"),
+      desc: "Delivered visual design work for local brands and restaurants.",
+      descBullets: [
+        "Worked directly with business owners to translate business needs into visual materials."
+      ]
+    }
+  ]
+};
 const openSource = {showGithubProfile: "true", display: false};
 
 const bigProjects = {
@@ -122,14 +148,14 @@ const bigProjects = {
       image: require("./assets/images/volunteerDashboard.png"),
       projectName: "Volunteer Management & Performance Analysis Dashboard",
       projectDesc:
-        "Power BI nonprofit dashboard analyzing 140 volunteer records — tracking 112 accepted applications, 8.2K hours logged, geographic distribution, educational profiles, and monthly engagement trends.",
+        "Power BI dashboard built on a synthetic 140-record volunteer dataset — tracking 112 approved applications, 8.2K hours logged, geographic distribution, educational profiles, and monthly engagement trends.",
       footerLink: [{name: "More Info", url: "/project-volunteer.html"}]
     },
     {
       image: require("./assets/images/covidDashboard.png"),
       projectName: "COVID Market Impact Dashboard",
       projectDesc:
-        "Advanced 6-page Power BI dashboard analyzing COVID-19's impact on 20 major U.S. companies (2018–2022) — covering stock returns, volatility, beta, Sharpe ratio, drawdown, sector recovery, and investor recommendations.",
+        "Six-page Power BI dashboard analyzing COVID-19's impact on 20 major U.S. companies (2018–2022) — covering stock returns, volatility, beta, drawdown, sector comparison, and investor recommendations.",
       footerLink: [{name: "More Info", url: "/project-covid.html"}]
     }
   ],

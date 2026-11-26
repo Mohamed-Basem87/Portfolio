@@ -36,7 +36,11 @@ Designed a dashboard to analyze user activity, exercise patterns, calories burne
 
 ### COVID-19 Business Impact Analysis
 
-Conducted an in-depth analysis of business performance during the COVID-19 period, exploring revenue changes, workforce trends, and industry impacts through interactive visualizations.
+Built a six-page Power BI analysis of COVID-19's impact on 20 U.S. companies (2018–2022), comparing stock returns, volatility, beta, drawdown, Tech vs Non-Tech performance, and investor scenarios.
+
+### Volunteer Management & Performance Dashboard
+
+Built an interactive Power BI dashboard on a synthetic volunteer dataset to analyze application statuses, logged hours, geographic distribution, educational profiles, and monthly intake trends.
 
 ### Personal Portfolio Website
 
@@ -127,7 +131,7 @@ The portfolio can be deployed using:
 
 ### Mohamed Basem
 
-Artificial Intelligence Student | Data Analyst | Power BI Developer
+Data Analyst | AI Student
 
 * GitHub: https://github.com/Mohamed-Basem87
 * LinkedIn: https://www.linkedin.com/in/mohamed-basem1/

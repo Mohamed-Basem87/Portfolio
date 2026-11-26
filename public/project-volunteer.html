@@ -310,13 +310,13 @@
       <div class="project-category-badge">Power BI · Nonprofit Analytics</div>
       <h1 class="project-title">Volunteer Management &<br>Performance Analysis Dashboard</h1>
       <p class="project-subtitle">
-        An interactive Power BI dashboard built to analyze volunteer applications, participation trends, engagement levels, and operational performance — transforming raw volunteer records into decision-ready insights for nonprofit stakeholders.
+        An interactive Power BI dashboard built on a synthetic (mock) dataset simulating volunteer applications, participation trends, engagement levels, and operational performance for a nonprofit — no real volunteer personal data is included.
       </p>
       <div class="tools-row">
         <span class="tool-chip"><i class="fas fa-chart-bar"></i> Power BI</span>
         <span class="tool-chip"><i class="fas fa-filter"></i> Power Query</span>
         <span class="tool-chip"><i class="fas fa-calculator"></i> DAX</span>
-        <span class="tool-chip"><i class="fas fa-calendar"></i> Time Intelligence</span>
+        <span class="tool-chip"><i class="fas fa-calendar"></i> Date Modeling</span>
         <span class="tool-chip"><i class="fas fa-map-marker-alt"></i> Geographic Analysis</span>
         <span class="tool-chip"><i class="fas fa-users"></i> KPI Cards</span>
       </div>
@@ -358,10 +358,10 @@
         <div class="card-label">Overview</div>
         <div class="card-title">From raw volunteer records to a centralized performance report</div>
         <div class="card-text">
-          <p>This project is an interactive Power BI dashboard developed to analyze and monitor volunteer data for a nonprofit organization. It provides a centralized view of volunteer applications, participation trends, engagement levels, and operational performance.</p>
+          <p>This project is an interactive Power BI dashboard developed to analyze and monitor a synthetic (mock) volunteer dataset for a simulated nonprofit organization. It provides a centralized view of volunteer applications, participation trends, engagement levels, and operational performance; no real volunteer personal data is included.</p>
           <p>The dataset includes volunteer records such as full name, governorate, area, educational level, car ownership status, application status, application date, and total volunteering hours. Data was cleaned in Power Query by promoting headers, assigning correct data types, replacing inconsistent values, removing unnecessary columns, and standardizing date and numeric fields.</p>
-          <p>The data model was built with the volunteers table as the main fact table, a dcalendar table for time intelligence, and a Key_Measures table for DAX measures. A relationship was created between volunteers[appliedAt] and dcalendar[Date] to support monthly and yearly trend analysis.</p>
-          <p>Custom DAX measures include Total Volunteers, Accepted, Rejected, Pending Applications, and Total Hours Logged — all dynamically responsive to slicers for Month/Year, Area, and Governorate.</p>
+          <p>The data model was built with the volunteers table as the main fact table, a dcalendar table for date fields, and a Key_Measures table for DAX measures. An active relationship was created between volunteers[appliedAt] and dcalendar[Date] to support monthly and yearly trend analysis.</p>
+          <p>Custom DAX measures include Total Volunteers, Accepted, Rejected and Pending; total hours are summed from the volunteers[totalVolunteeringHours] column rather than a separate measure. The visuals respond to slicers for Month/Year, Area, and Governorate.</p>
         </div>
       </div>
 
@@ -391,21 +391,21 @@
           <div class="result-item">
             <div class="result-icon">✅</div>
             <div class="result-text">
-              <h4>112 accepted out of 137 total applications — 81.7% acceptance rate</h4>
-              <p>KPI cards revealed only 6 rejections and 19 pending, showing a highly efficient intake process with minimal bottlenecks.</p>
+              <h4>112 approved out of 137 non-banned applications — 81.8% approval rate</h4>
+              <p>KPI cards show 6 rejected, 19 pending and 3 banned records; across all 140 records, approvals are 80.0%.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">📅</div>
             <div class="result-text">
-              <h4>February 2024 was the peak month with ~19 new volunteers</h4>
-              <p>The monthly combo chart showed a strong early-year surge in applications, followed by a gradual decline through mid-year and a recovery in late 2024.</p>
+              <h4>February 2024 was the peak intake month with 19 records</h4>
+              <p>The monthly combo chart shows February 2024 as the high point; monthly counts then varied between 5 and 13 through January 2025.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">🏆</div>
             <div class="result-text">
-              <h4>Top volunteer logged 150 hours — Israa Wael Al-Shenawi</h4>
+              <h4>Top volunteer logged 149.61 hours — Israa Wael Al-Shenawi</h4>
               <p>The Top 10 Volunteers by Hours chart identified the most active contributors, supporting volunteer recognition and performance monitoring.</p>
             </div>
           </div>
@@ -419,8 +419,8 @@
           <div class="result-item">
             <div class="result-icon">🎓</div>
             <div class="result-text">
-              <h4>47.32% of volunteers hold a bachelor's degree</h4>
-              <p>Educational level breakdown combined with 76.79% car-less volunteers informs logistics planning and field operation decisions for the organization.</p>
+              <h4>47.32% of approved volunteers hold a bachelor's degree</h4>
+              <p>Among the 112 approved volunteers, 76.79% reported no car. Using all 140 records instead gives 50.00% bachelor's degrees and 77.14% without a car.</p>
             </div>
           </div>
         </div>

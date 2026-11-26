@@ -332,7 +332,7 @@
       <div class="project-category-badge">Power BI · Data Analysis</div>
       <h1 class="project-title">Sales & Salesperson Ranking<br>Analysis Dashboard</h1>
       <p class="project-subtitle">
-        Transforming raw operational data into a full star schema BI model with an interactive Power BI dashboard — tracking revenue, orders, and salesperson performance across 3 years.
+        Transforming raw operational data into a star schema BI model with an interactive Power BI dashboard — tracking revenue, orders, and salesperson performance from January 2019 to March 2021.
       </p>
       <div class="tools-row">
         <span class="tool-chip"><i class="fas fa-chart-bar"></i> Power BI</span>
@@ -407,7 +407,7 @@
         <div class="card-title">Turning raw sales data into a business intelligence engine</div>
         <div class="card-text">
           <p>This project focused on transforming raw operational sales data into a fully structured analytical model and building a dynamic Power BI dashboard to analyze revenue performance, salesperson productivity, and product demand.</p>
-          <p>The data model was normalized into a star schema with the transactional Sales table as the fact table, supported by dimension tables for Products, Salesperson, Calendar, and Targets. All preparation was handled inside Power Query before loading into the model.</p>
+          <p>The data model uses a star schema with two fact tables (Sales and Target) and three dimension tables (Products, Salesperson and Calendar). All preparation was handled inside Power Query before loading into the model.</p>
           <p>Several DAX measures were built to calculate key business metrics including total revenue, total orders, average transaction price (ATP), and salesperson achievement against targets — all dynamically responsive to filters and slicers.</p>
         </div>
       </div>
@@ -422,12 +422,12 @@
           <div class="stat-label">Total Orders</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-num">3</div>
           <div class="stat-label">Dimension Tables</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">3<span>yr</span></div>
-          <div class="stat-label">Time Period</div>
+          <div class="stat-num">27</div>
+          <div class="stat-label">Months of Data</div>
         </div>
       </div>
 
@@ -438,36 +438,36 @@
           <div class="result-item">
             <div class="result-icon">📦</div>
             <div class="result-text">
-              <h4>Wheat Flour was the top revenue product at $4.5M</h4>
+              <h4>Wheat Flour was the top revenue product group at $4.47M</h4>
               <p>Food category dominated at 90.21% of total orders vs. Drink at 9.79%.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">🏆</div>
             <div class="result-text">
-              <h4>Diego Araujo ranked #1 salesperson with $6.3M revenue</h4>
-              <p>Supervisor-level ranking revealed clear performance gaps, enabling targeted coaching decisions.</p>
+              <h4>Diego Araujo was the top supervisor with $6.32M in revenue</h4>
+              <p>The report shows him as Abdallah Mahmoud after Power Query name standardization. Carla Ferreira was the top salesperson at $4.71M.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">📡</div>
             <div class="result-text">
-              <h4>Online channel drove 48.56% of total revenue ($9M)</h4>
-              <p>Channel split: Online $9M (48.56%), Distributor $6M (34.05%), Retail $3M (17.39%).</p>
+              <h4>Retail channel drove 48.56% of total revenue ($8.70M)</h4>
+              <p>Channel split: Retail $8.70M (48.56%), Distributor $6.10M (34.05%), Online $3.11M (17.39%).</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">📈</div>
             <div class="result-text">
-              <h4>Revenue peaked in Q3 2020 before declining in 2021</h4>
-              <p>Time intelligence surfaced seasonal trends and a revenue dip in early 2021 requiring investigation.</p>
+              <h4>Revenue peaked in Q4 2020 at $3.24M, with October 2020 the strongest month</h4>
+              <p>The transaction data ends in March 2021, so 2021 is a partial period rather than a full year.</p>
             </div>
           </div>
           <div class="result-item">
             <div class="result-icon">⚙️</div>
             <div class="result-text">
-              <h4>Star schema reduced complexity and improved query speed</h4>
-              <p>Normalizing into 5 dimension tables eliminated redundancy and enabled efficient cross-filtering.</p>
+              <h4>A star schema keeps the report responsive to slicers</h4>
+              <p>Two fact tables (Sales and Target) and three dimension tables support cross-filtering; no query-speed benchmark was run.</p>
             </div>
           </div>
         </div>
